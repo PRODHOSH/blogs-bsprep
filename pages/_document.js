@@ -13,15 +13,20 @@ export default function Document() {
         <link rel="shortcut icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
 
+        {/* Sitemap + crawling */}
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
         {/* Default OG — overridden per page */}
         <meta property="og:site_name" content="BSPrep Blogs" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_IN" />
+        <meta property="og:image" content="https://blog.bsprep.in/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
 
         {/* Default Twitter Card — overridden per page */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@prodhosh3" />
-        <meta name="twitter:creator" content="@prodhosh3" />
+        <meta name="twitter:image" content="https://blog.bsprep.in/og-image.png" />
       </Head>
       <body>
         <Main />

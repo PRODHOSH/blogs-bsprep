@@ -36,12 +36,14 @@ export default function Post({ postData }) {
         <meta property="og:url" content={`https://blog.bsprep.in/blog/${postData.slug}`} />
         <meta property="og:title" content={`${title} | BSPrep Blogs`} />
         <meta property="og:description" content={excerpt || title} />
+        <meta property="og:image" content="https://blog.bsprep.in/og-image.png" />
         {date && <meta property="article:published_time" content={new Date(date).toISOString()} />}
         <meta property="article:author" content="Prodhosh VS" />
         {tags && tags.map((tag) => <meta key={tag} property="article:tag" content={tag} />)}
 
         <meta name="twitter:title" content={`${title} | BSPrep Blogs`} />
         <meta name="twitter:description" content={excerpt || title} />
+        <meta name="twitter:image" content="https://blog.bsprep.in/og-image.png" />
 
         <script
           type="application/ld+json"
