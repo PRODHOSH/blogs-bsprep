@@ -1,6 +1,4 @@
-# BSPrep Blogs
-
-This code cannot be used anywhere. It is not open source and not available for reuse, copying or redistribution.
+![BSPrep Blogs](public/og-image.png)
 
 ## About
 
@@ -8,3 +6,10 @@ BSPrep is a student led initiative. It is not affiliated with IIT Madras or any 
 
 - Official website: [bsprep.in](https://bsprep.in)
 - Blog website: [blog.bsprep.in](https://blog.bsprep.in)
+
+
+
+
+
+This code cannot be used anywhere. It is not open source and not available for reuse, copying or redistribution.
+
