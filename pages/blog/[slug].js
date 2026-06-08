@@ -38,7 +38,7 @@ export default function Post({ postData }) {
         <meta property="og:description" content={excerpt || title} />
         <meta property="og:image" content="https://blog.bsprep.in/og-image.png" />
         {date && <meta property="article:published_time" content={new Date(date).toISOString()} />}
-        <meta property="article:author" content="Prodhosh VS" />
+        <meta property="article:author" content="BSPrep" />
         {tags && tags.map((tag) => <meta key={tag} property="article:tag" content={tag} />)}
 
         <meta name="twitter:title" content={`${title} | BSPrep Blogs`} />
@@ -54,14 +54,9 @@ export default function Post({ postData }) {
               headline: title,
               description: excerpt || title,
               author: {
-                "@type": "Person",
-                name: "Prodhosh VS",
-                url: "https://prodhosh.me",
-                sameAs: [
-                  "https://github.com/PRODHOSH",
-                  "https://www.linkedin.com/in/prodhoshvs/",
-                  "https://twitter.com/prodhosh3",
-                ],
+                "@type": "Organization",
+                name: "BSPrep",
+                url: "https://bsprep.in",
               },
               publisher: {
                 "@type": "Organization",
@@ -114,12 +109,12 @@ export default function Post({ postData }) {
             <span>
               By{" "}
               <a
-                href="https://prodhosh.me"
+                href="https://bsprep.in"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.authorLink}
               >
-                Prodhosh VS
+                BSPrep
               </a>
             </span>
             {formattedDate && (
@@ -144,14 +139,14 @@ export default function Post({ postData }) {
 
         <footer className={styles.postFooter}>
           <p className={styles.footerText}>
-            Thanks for reading! More of my work at{" "}
+            Thanks for reading! Explore more at{" "}
             <a
-              href="https://prodhosh.me"
+              href="https://bsprep.in"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.footerLink}
             >
-              prodhosh.me
+              bsprep.in
             </a>
           </p>
           <Link href="/" className="main-button">

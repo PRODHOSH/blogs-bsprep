@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="author" content="Prodhosh VS" />
+        <meta name="author" content="BSPrep" />
         <meta name="theme-color" content="#FAF8F5" />
 
         {/* Favicon */}

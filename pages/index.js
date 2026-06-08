@@ -30,17 +30,17 @@ export default function BlogIndex({ allPosts, allTags }) {
     <>
       <Head>
         <title>BSPrep Blogs | Thoughts on Tech, AI &amp; Building Things</title>
-        <meta name="description" content="Browse all blog posts by Prodhosh VS — articles on tech, AI, full stack development, and building software." />
+        <meta name="description" content="Browse all blog posts from BSPrep — articles on tech, AI, full stack development, and building software." />
         <link rel="canonical" href="https://blog.bsprep.in" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://blog.bsprep.in" />
         <meta property="og:title" content="BSPrep Blogs | Thoughts on Tech, AI & Building Things" />
-        <meta property="og:description" content="Browse all blog posts by Prodhosh VS — articles on tech, AI, full stack development, and building software." />
+        <meta property="og:description" content="Browse all blog posts from BSPrep — articles on tech, AI, full stack development, and building software." />
         <meta property="og:image" content="https://blog.bsprep.in/og-image.png" />
 
         <meta name="twitter:title" content="BSPrep Blogs | Thoughts on Tech, AI & Building Things" />
-        <meta name="twitter:description" content="Browse all blog posts by Prodhosh VS — articles on tech, AI, full stack development, and building software." />
+        <meta name="twitter:description" content="Browse all blog posts from BSPrep — articles on tech, AI, full stack development, and building software." />
         <meta name="twitter:image" content="https://blog.bsprep.in/og-image.png" />
       </Head>
 
