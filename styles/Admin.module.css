@@ -1,6 +1,7 @@
 /* ── Dark theme palette (scoped to admin) ── */
 .loginPage,
-.adminLayout {
+.adminLayout,
+.editorLayout {
   --admin-bg: #0f1a24;
   --admin-sidebar: #0a141d;
   --admin-surface: #18242f;
