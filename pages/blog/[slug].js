@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import { getAllPostSlugs, getPostData } from "../../lib/posts";
+import CodeBlockEnhancer from "../../components/CodeBlockEnhancer";
+import Comments from "../../components/Comments";
 import styles from "../../styles/Post.module.css";
 
 export async function getStaticPaths() {
@@ -25,6 +27,10 @@ export default function Post({ postData }) {
       })
     : "";
 
+  const ogImageUrl = `https://blog.bsprep.in/api/og?title=${encodeURIComponent(
+    title
+  )}&tags=${encodeURIComponent((tags || []).join(","))}`;
+
   return (
     <>
       <Head>
@@ -36,14 +42,14 @@ export default function Post({ postData }) {
         <meta property="og:url" content={`https://blog.bsprep.in/blog/${postData.slug}`} />
         <meta property="og:title" content={`${title} | BSPrep Blogs`} />
         <meta property="og:description" content={excerpt || title} />
-        <meta property="og:image" content="https://blog.bsprep.in/og-image.png" />
+        <meta property="og:image" content={ogImageUrl} />
         {date && <meta property="article:published_time" content={new Date(date).toISOString()} />}
         <meta property="article:author" content="BSPrep" />
         {tags && tags.map((tag) => <meta key={tag} property="article:tag" content={tag} />)}
 
         <meta name="twitter:title" content={`${title} | BSPrep Blogs`} />
         <meta name="twitter:description" content={excerpt || title} />
-        <meta name="twitter:image" content="https://blog.bsprep.in/og-image.png" />
+        <meta name="twitter:image" content={ogImageUrl} />
 
         <script
           type="application/ld+json"
@@ -70,7 +76,7 @@ export default function Post({ postData }) {
               },
               image: {
                 "@type": "ImageObject",
-                url: "https://blog.bsprep.in/og-image.png",
+                url: ogImageUrl,
                 width: 1200,
                 height: 630,
               },
@@ -132,10 +138,7 @@ export default function Post({ postData }) {
           </div>
         </header>
 
-        <div
-          className={styles.content}
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <CodeBlockEnhancer>{contentHtml}</CodeBlockEnhancer>
 
         <footer className={styles.postFooter}>
           <p className={styles.footerText}>
@@ -153,6 +156,8 @@ export default function Post({ postData }) {
             ← More Posts
           </Link>
         </footer>
+
+        <Comments slug={postData.slug} />
       </article>
     </>
   );

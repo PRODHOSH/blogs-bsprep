@@ -1,9 +1,16 @@
 import Head from "next/head";
 import Script from "next/script";
+import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
+import "highlight.js/styles/atom-one-dark.css";
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  const isAdmin = router.pathname.startsWith("/admin");
+
+  const page = <Component {...pageProps} />;
+
   return (
     <>
       <Head>
@@ -24,9 +31,7 @@ export default function App({ Component, pageProps }) {
         `}
       </Script>
 
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {isAdmin ? page : <Layout>{page}</Layout>}
     </>
   );
 }

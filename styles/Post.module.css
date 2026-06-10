@@ -145,6 +145,7 @@
 }
 
 .content pre {
+  position: relative;
   background: var(--dark);
   color: #abe338;
   padding: 22px 26px;
@@ -160,6 +161,32 @@
   padding: 0;
   font-size: 14px;
   line-height: 1.65;
+}
+
+.content pre code.hljs {
+  background: none;
+  padding: 0;
+  display: block;
+}
+
+.copyBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #cfd8e3;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  font-family: "Google Sans Regular", sans-serif;
+  font-size: 12px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.copyBtn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
 }
 
 .content blockquote {

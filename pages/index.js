@@ -1,8 +1,10 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import { getSortedPostsData, getAllTags } from "../lib/posts";
 import styles from "../styles/Blog.module.css";
+
+const POSTS_PER_PAGE = 9;
 
 export async function getStaticProps() {
   const allPosts = await getSortedPostsData();
@@ -13,6 +15,7 @@ export async function getStaticProps() {
 export default function BlogIndex({ allPosts, allTags }) {
   const [activeTag, setActiveTag] = useState("all");
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
 
   const filtered = allPosts.filter((post) => {
     const matchTag =
@@ -25,6 +28,18 @@ export default function BlogIndex({ allPosts, allTags }) {
       (post.excerpt && post.excerpt.toLowerCase().includes(q));
     return matchTag && matchSearch;
   });
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
+  const currentPage = Math.min(page, totalPages);
+  const paginated = filtered.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  // Reset to page 1 whenever the search/tag filters change
+  useEffect(() => {
+    setPage(1);
+  }, [activeTag, query]);
 
   return (
     <>
@@ -86,11 +101,43 @@ export default function BlogIndex({ allPosts, allTags }) {
         </div>
 
         {filtered.length > 0 ? (
-          <div className={styles.grid}>
-            {filtered.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+          <>
+            <div className={styles.grid}>
+              {paginated.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+
+            {totalPages > 1 && (
+              <nav className={styles.pagination} aria-label="Pagination">
+                <button
+                  className={styles.pageBtn}
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                >
+                  ← Prev
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                  <button
+                    key={n}
+                    className={`${styles.pageBtn} ${
+                      n === currentPage ? styles.pageBtnActive : ""
+                    }`}
+                    onClick={() => setPage(n)}
+                  >
+                    {n}
+                  </button>
+                ))}
+                <button
+                  className={styles.pageBtn}
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                >
+                  Next →
+                </button>
+              </nav>
+            )}
+          </>
         ) : (
           <div className={styles.empty}>
             <p>No posts found. Try a different search or tag.</p>

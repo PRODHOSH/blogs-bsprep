@@ -59,6 +59,7 @@ export default function AdminDashboard() {
           <nav className={styles.sidebarNav}>
             <span className={styles.sidebarLinkActive}>Posts</span>
             <Link href="/admin/new" className={styles.sidebarLink}>New Post</Link>
+            <Link href="/admin/comments" className={styles.sidebarLink}>Comments</Link>
             <Link href="/blog" className={styles.sidebarLink} target="_blank">View Blog ↗</Link>
           </nav>
           <button onClick={logout} className={styles.logoutBtn}>Log out</button>

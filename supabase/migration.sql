@@ -23,3 +23,32 @@ create policy "Public can read published posts"
   on public.posts
   for select
   using (published = true);
+
+-- Comments — anonymous (name + text), auto-published, moderated via the
+-- admin dashboard using the service-role key.
+create table if not exists public.comments (
+  id bigint generated always as identity primary key,
+  post_slug text not null references public.posts(slug) on update cascade on delete cascade,
+  name text not null,
+  content text not null,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists comments_post_slug_idx on public.comments(post_slug);
+
+alter table public.comments enable row level security;
+
+drop policy if exists "Public can read comments" on public.comments;
+create policy "Public can read comments"
+  on public.comments
+  for select
+  using (true);
+
+drop policy if exists "Public can add comments" on public.comments;
+create policy "Public can add comments"
+  on public.comments
+  for insert
+  with check (
+    char_length(name) between 1 and 60
+    and char_length(content) between 1 and 2000
+  );

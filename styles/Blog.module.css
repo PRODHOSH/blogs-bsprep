@@ -102,6 +102,50 @@
   font-size: 18px;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.pageBtn {
+  min-width: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: "Google Sans Regular", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background: var(--highlight);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageBtnActive {
+  background: var(--jacket);
+  border-color: var(--jacket);
+  color: #fff;
+}
+
+.pageBtnActive:hover:not(:disabled) {
+  background: var(--button-bg);
+  border-color: var(--button-bg);
+  color: #fff;
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
