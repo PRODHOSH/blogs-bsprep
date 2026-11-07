@@ -33,4 +33,7 @@ next-env.d.ts
 
 # development
 dev.log
-config.bat
+
+# env files
+.env*
+!.env.example
